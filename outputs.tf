@@ -15,7 +15,12 @@ output "worker_nodes" {
 
 output "kubeconfig" {
   description = "Your Kubeconfig"
-  value       = "${path.module}/cluster-config-k3"
+  value       = "${path.module}/${pathexpand(format("%s-config", var.cluster_name))}"
+}
+
+output "kubeconfig_base64" {
+  description = "Base64 encoded kubeconfig string"
+  value       = data.external.k3s_config.result.kubeconfig
 }
 
 # output "cluster_lb_address" {
