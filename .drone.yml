@@ -20,8 +20,9 @@ steps:
       from_secret: TF_VAR_worker_node_count
   commands:
   - echo "http://dl-3.alpinelinux.org/alpine/edge/testing" | tee -a /etc/apk/repositories
-  - apk --update add curl openssh-client jq kubectl
+  - apk --update add curl openssh-client jq kubectl bash
   - export TF_VAR_cluster_name=$DRONE_COMMIT
+  - export TF_VAR_database_cluster_name=$DRONE_COMMIT
   - curl --silent --output terraform.zip "https://releases.hashicorp.com/terraform/1.0.9/terraform_1.0.9_linux_amd64.zip"
   - unzip terraform.zip ; rm -f terraform.zip; chmod +x terraform
   - install terraform -c /usr/local/bin/

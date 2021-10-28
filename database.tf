@@ -3,7 +3,7 @@ resource "random_id" "k3sdb" {
 }
 
 resource "digitalocean_database_cluster" "rancherdb" {
-  name       = "rancher-k3s-management"
+  name       = var.database_cluster_name
   engine     = "mysql"
   version    = "8"
   size       = var.database_size

@@ -60,3 +60,8 @@ variable "worker_node_count" {
   description = "Number of worker nodes"
   default     = 3
 }
+
+variable "database_cluster_name" {
+  description = "Name of DB cluster"
+  default     = "rancherdb"
+}
