@@ -10,5 +10,4 @@ server-ca.crt
 client-admin.crt
 client-admin.key
 *-config
-scripts/
 cluster-config-k3s
