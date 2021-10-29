@@ -29,6 +29,5 @@ steps:
   - terraform -v
   - terraform init 
   - terraform validate
-  - if terraform apply -auto-approve; then echo "Terraform Applied"; else echo "Failed." ; terraform destroy -auto-approve; fi
-  - kubectl --kubeconfig=$TF_VAR_cluster_name-config get nodes
+  - if terraform apply -auto-approve; then echo "Terraform Applied" && kubectl --kubeconfig=$TF_VAR_cluster_name-config get nodes; else echo "Failed." ; terraform destroy -auto-approve; fi
   - terraform destroy -auto-approve
