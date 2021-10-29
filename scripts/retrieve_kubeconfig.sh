@@ -3,7 +3,7 @@
 CONTROLLER_IP=$1
 KEY_PATH=$2
 
-/bin/sleep 1 ; \
+/bin/sleep 180 ; \
 if [[ "$OSTYPE" == "darwin"* ]]; then
 	CONFIG=$(/usr/bin/ssh -i \
 	$KEY_PATH \

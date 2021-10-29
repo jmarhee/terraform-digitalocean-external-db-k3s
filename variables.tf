@@ -46,11 +46,6 @@ variable "database_node_count" {
   default     = 3
 }
 
-variable "database_admin_user" {
-  description = "MySQL user name"
-  default     = "rancher_admin"
-}
-
 variable "controller_peer_count" {
   description = "Number of additional Control Plane nodes"
   default     = 2
@@ -61,7 +56,3 @@ variable "worker_node_count" {
   default     = 3
 }
 
-variable "database_cluster_name" {
-  description = "Name of DB cluster"
-  default     = "rancherdb"
-}

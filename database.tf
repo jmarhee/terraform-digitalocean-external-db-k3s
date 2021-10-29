@@ -1,9 +1,13 @@
-resource "random_id" "k3sdb" {
-  byte_length = 8
+resource "random_string" "rancherdb" {
+  length  = 6
+  special = false
+  number  = false
+  upper   = false
+  lower   = true
 }
 
 resource "digitalocean_database_cluster" "rancherdb" {
-  name       = var.database_cluster_name
+  name       = random_string.rancherdb.result
   engine     = "mysql"
   version    = "8"
   size       = var.database_size
