@@ -8,8 +8,8 @@ resource "random_string" "rancherdb" {
 
 resource "digitalocean_database_cluster" "rancherdb" {
   name       = random_string.rancherdb.result
-  engine     = "mysql"
-  version    = "8"
+  engine     = "pg"
+  version    = "15"
   size       = var.database_size
   region     = var.database_region
   node_count = var.database_node_count

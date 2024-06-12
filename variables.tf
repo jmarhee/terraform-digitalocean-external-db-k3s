@@ -22,7 +22,7 @@ variable "cluster_region" {
 }
 
 variable "database_region" {
-  description = "Region for MySQL Cluster"
+  description = "Region for psql Cluster"
   default     = "nyc3"
 }
 
@@ -42,7 +42,7 @@ variable "database_size" {
 }
 
 variable "database_node_count" {
-  description = "Number of Database nodes in MySQL cluster"
+  description = "Number of Database nodes in psql cluster"
   default     = 3
 }
 
