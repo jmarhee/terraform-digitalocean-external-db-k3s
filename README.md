@@ -1,4 +1,4 @@
-# High-Availability K3s
+# High-Availability K3s on DigitalOcean
 
 [![Build Status](https://cloud.drone.io/api/badges/jmarhee/terraform-digitalocean-kubernetes/status.svg)](https://cloud.drone.io/jmarhee/terraform-digitalocean-kubernetes)
 
