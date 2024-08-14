@@ -14,6 +14,12 @@ The worker pool size is managed by the `worker_node_count` variable, and can be 
 
 The cluster kubeconfig will connect to the control plane nodes through the load balancer address through the `cluster_lb_address` output value. This will be located in the module root at the end of `terraform apply`.
 
+The status of cluster spin-up after `apply` completes can be checked by running:
+```bash
+kubectl --kubeconfig=rancher-k3s-config get nodes -w
+```
+where for example `var.cluster_name` was set to `rancher-k3s` and your kubeconfig file will be appended by `-config`.
+
 ## Usage
 
 Set `TF_VAR_database_node_count`, `TF_VAR_controller_peer_count`, `TF_VAR_worker_node_count`, and `TF_VAR_digitalocean_token` and apply:
