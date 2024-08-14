@@ -1,7 +1,7 @@
 resource "random_string" "rancherdb" {
   length  = 6
   special = false
-  number  = false
+  numeric  = false
   upper   = false
   lower   = true
 }
