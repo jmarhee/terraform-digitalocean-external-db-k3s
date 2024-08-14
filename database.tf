@@ -1,7 +1,7 @@
 resource "random_string" "rancherdb" {
   length  = 6
   special = false
-  numeric  = false
+  numeric = false
   upper   = false
   lower   = true
 }
@@ -16,7 +16,7 @@ resource "digitalocean_database_cluster" "rancherdb" {
 }
 
 resource "digitalocean_database_firewall" "rancherdb-fw-controller" {
-  depends_on = [digitalocean_droplet.controller-init, digitalocean_droplet.controller-peer]
+  depends_on = [digitalocean_droplet.control-plane-init, digitalocean_droplet.control-plane-replica]
   cluster_id = digitalocean_database_cluster.rancherdb.id
 
   rule {

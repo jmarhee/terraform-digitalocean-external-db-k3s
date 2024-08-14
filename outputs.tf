@@ -1,11 +1,11 @@
 output "controller_addresses" {
   description = "Kubernetes Controller IP Addresses"
-  value       = "${digitalocean_droplet.controller-init.ipv4_address}\n"
+  value       = "${digitalocean_droplet.control-plane-init.ipv4_address}\n"
 }
 
 output "controller_peers" {
   description = "Control Plane Nodes"
-  value       = digitalocean_droplet.controller-peer.*.ipv4_address
+  value       = digitalocean_droplet.control-plane-replica.*.ipv4_address
 }
 
 output "worker_nodes" {
@@ -23,7 +23,7 @@ output "kubeconfig_base64" {
   value       = data.external.k3s_config.result.kubeconfig
 }
 
-# output "cluster_lb_address" {
-#   description = "K3s Cluster LB Address"
-#   value       = digitalocean_loadbalancer.rancher-k3s.ip
-# }
+output "cluster_lb_address" {
+  description = "K3s Cluster LB Address"
+  value       = digitalocean_loadbalancer.kubernetes_lb.ip
+}
