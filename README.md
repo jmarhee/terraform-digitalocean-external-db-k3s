@@ -2,7 +2,17 @@
 
 [![Build Status](https://cloud.drone.io/api/badges/jmarhee/terraform-digitalocean-kubernetes/status.svg)](https://cloud.drone.io/jmarhee/terraform-digitalocean-kubernetes)
 
-Terraform module to deploy a highly-available K3s cluster using DigitalOcean DBaaS-backed Postgres cluster. 
+Terraform module to deploy a highly-available K3s cluster using DigitalOcean DBaaS-backed Postgres cluster.
+
+## Architecture
+
+This module deploys a Postgres cluster that the control plane pool will connect to on startup, a load balancer that the workers will register through to the control plane pool, and a set of worker nodes that will be managed by the control plane pool.
+
+This setup is fully highly available. The control plane pool is set up to be `n+1` nodes, where `n` is the number of replicas of the initial control plane node you specify in your .tfvars file. To scale this pool, manage the `control_plane_replica_count` variable.
+
+The worker pool size is managed by the `worker_node_count` variable, and can be scaled up or down as needed.
+
+The cluster kubeconfig will connect to the control plane nodes through the load balancer address through the `cluster_lb_address` output value. This will be located in the module root at the end of `terraform apply`.
 
 ## Usage
 
