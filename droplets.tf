@@ -24,8 +24,10 @@ data "template_file" "control-plane-replica" {
   depends_on = [digitalocean_database_cluster.rancherdb, digitalocean_droplet.control-plane-init]
   template   = file("${path.module}/templates/control-plane-replica.tpl")
   vars = {
-    RANCHER_DATA_SOURCE = "postgres://doadmin:${nonsensitive(digitalocean_database_cluster.rancherdb.password)}@${digitalocean_database_cluster.rancherdb.host}:${digitalocean_database_cluster.rancherdb.port}/defaultdb?sslmode=require"
-    GENERATED_K3S_TOKEN = random_string.k3s_token.result
+    RANCHER_DATA_SOURCE   = "postgres://doadmin:${nonsensitive(digitalocean_database_cluster.rancherdb.password)}@${digitalocean_database_cluster.rancherdb.host}:${digitalocean_database_cluster.rancherdb.port}/defaultdb?sslmode=require"
+    GENERATED_K3S_TOKEN   = random_string.k3s_token.result
+    LOAD_BALANCER_VIP     = digitalocean_loadbalancer.kubernetes_lb.ip
+    CONTROL_PLANE_INIT_IP = digitalocean_droplet.control-plane-init.ipv4_address
   }
 }
 
