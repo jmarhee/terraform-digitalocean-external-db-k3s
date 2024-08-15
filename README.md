@@ -22,7 +22,7 @@ where for example `var.cluster_name` was set to `rancher-k3s` and your kubeconfi
 
 ## Usage
 
-Set `TF_VAR_database_node_count`, `TF_VAR_controller_peer_count`, `TF_VAR_worker_node_count`, and `TF_VAR_digitalocean_token` and apply:
+Set `TF_VAR_database_node_count`, `TF_VAR_control_plane_replica_count`, `TF_VAR_worker_node_count`, and `TF_VAR_digitalocean_token` and apply:
 
 ```bash
 terraform plan
